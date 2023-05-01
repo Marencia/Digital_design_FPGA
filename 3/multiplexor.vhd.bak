@@ -1,0 +1,33 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity multiplexor is
+port	(a, b: in std_logic_vector(7 downto 0);
+		 sel: in std_logic;
+		 cout, s: out std_logic
+		 );
+end multiplexor;
+
+
+architecture estructura of multiplexor is
+begin
+
+process (a, b, cin)
+begin
+
+	if (std_logic_vector'(a, b, cin)="000") then
+		(cout, s)<=std_logic_vector'("00");
+		
+	elsif ((std_logic_vector'(a, b, cin)=("001")) or (std_logic_vector'(a, b, cin)=("010")) or (std_logic_vector'(a, b, cin)=("100"))) then
+		(cout, s)<=std_logic_vector'("01");
+		
+	elsif (std_logic_vector'(a, b, cin)=("111")) then
+		(cout, s)<=std_logic_vector'("11");
+		
+	else (cout, s)<=std_logic_vector'("10");
+	
+	end if;
+end process;
+
+end estructura;
+  
