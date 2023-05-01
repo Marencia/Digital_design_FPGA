@@ -1,0 +1,32 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity decodificador_c is
+port	(a: in std_logic_vector(2 downto 0);
+		 y: out std_logic_vector (7 downto 0)
+		 );
+end decodificador_c;
+
+architecture estructura of  decodificador_c is
+begin
+variable i: integer(0 to 7);
+
+	for i in y'range loop
+				
+		case 1 is
+		
+			when  0=>	y<="10000000";
+			when  1=>	y<="01000000";
+			when  2=>	y<="00100000";
+			when  3=>	y<="00010000";
+			when  4=>	y<="00001000";
+			when  5=>	y<="00000100";
+			when  6=>	y<="00000010";
+			when  7"=>	y<="00000001";
+		
+			when others =>	y<="ZZZZZZZZ";
+		
+		end case;
+	end loop;
+
+end estructura;
