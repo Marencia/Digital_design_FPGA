@@ -1,6 +1,3 @@
---FALTARIA CREAR LAS VARIABLES PARA EL PUNTAJE Y MANDARLA POR DECO AL 7 SEGMENTOS
---ADEMAS DE CREAR EL PROCESO DEL CARTEL O METERLO DIRACTAMENTE AL FINAL CUANDO PUNTAJE =10
-
 library ieee; 
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -146,7 +143,7 @@ begin
  
     
 end process;
--- 
+
  
 process(cuenta_horzjugador,cuenta_vertj1,cuenta_vertj2,entradaazul,entradarojo,entradaverde,salidacont1,salidacont2,clk,num_aleat,cuentacartel_h, cuentacartel_v)
 variable cont1,cont2,cont3,cont4:integer range 0 to 10;
@@ -158,7 +155,7 @@ variable j :integer;
 variable cuentass :integer:=0;
 variable puntaje_j1:integer:=0;
 VARiable puntaje_j2:integer:=0;
---variable veloc:integer;
+
  
 begin
  
@@ -174,20 +171,19 @@ begin
                     if i=100000000 then
                     i:=0;
 							if num_aleat=0 then
---                        if ((num_aleat>=0 and num_aleat<2))then
---									if ((num_aleat mod 2)=0) then
+
 										estado_pelotita<=movimiento1;
 									elsif  num_aleat=1 then
 										estado_pelotita<=movimiento2;
---									end if;
+
 										
                        elsif  num_aleat=2 then
---									if ((num_aleat mod 2)=0) then
+
 									   estado_pelotita<=movimiento3;
 									else
                             estado_pelotita<=movimiento4;
 									 end if;
---                        end if;
+
                     else
                     i:=i+1;
 						  
@@ -207,7 +203,7 @@ begin
 									 puntaje_j1:=puntaje_j1+1;
 									 estado_pelotita<=inicio;
 
-										--lamar a proceso que gano el JUGADOR 1
+										
 									end if;
                         elsif (posicion_h2=608 and (limite_vertjug2>posicion_v1 and (limite_vertjug2-50)<posicion_v2)) then
                             estado_pelotita<=movimiento3;
@@ -238,7 +234,7 @@ begin
 									 puntaje_j1:=puntaje_j1+1;
 									 estado_pelotita<=inicio;
 
-										--lamar a proceso que gano el JUGADOR 1
+										
 									end if;
                         elsif (posicion_h2=608 and (limite_vertjug2>posicion_v1 and (limite_vertjug2-50)<posicion_v2)) then
                             estado_pelotita<=movimiento4;
@@ -267,8 +263,6 @@ begin
 									 else
 									 puntaje_j2:=puntaje_j2+1;
 									 estado_pelotita<=inicio;
-
-										--lamar a proceso que gano el JUGADOR 2
 									end if;
                         elsif (posicion_h1=30 and ((limite_vertjug1-50)<posicion_v2 and limite_vertjug1>posicion_v1)) then
                             estado_pelotita<=movimiento1;
@@ -297,8 +291,6 @@ begin
 									 else
 									 puntaje_j2:=puntaje_j2+1;
 									 estado_pelotita<=inicio;
-
-										--lamar a proceso que gano el JUGADOR 2
 									end if;
                         elsif (posicion_h1=30 and ((limite_vertjug1-50)<posicion_v2 and limite_vertjug1>posicion_v1))then
                             estado_pelotita<=movimiento2;
@@ -406,7 +398,6 @@ begin
     end if;
  
 -- (Barras)
-    --barras color y pelotita
 if (cuenta_horzjugador>20) and (cuenta_horzjugador<30) and (cuenta_vertj1>(limite_vertjug1-50)) and (cuenta_vertj1<limite_vertjug1)  then
  
 salidaverde(9)<=entradarojo(5);
@@ -843,193 +834,6 @@ elsif ((estado_pelotita = cartel1) and (cuentacartel_v>120) and (cuentacartel_v<
 	salidarojo<="0000000000";
 	salidaazul<="0000000000";
 	salidaverde<="0000000000";	
-	
---Cartel para ganador/a
-
---Palabra "SO'"
---Letra 'S' :)
-
-elsif  ((estado_pelotita = cartel1b) and  (cuentacartel_v>209) and (cuentacartel_v<243) and (cuentacartel_h>109) and (cuentacartel_h<115)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>237) and (cuentacartel_v<265) and (cuentacartel_h>142) and (cuentacartel_h<148)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>109) and (cuentacartel_h<148)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>109) and (cuentacartel_h<148) )then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>237) and (cuentacartel_v<243) and (cuentacartel_h>109) and (cuentacartel_h<148)) then --medio
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
---Letra 'O' :)
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>159) and (cuentacartel_h<165)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>191) and (cuentacartel_h<197)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>159) and (cuentacartel_h<197)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>159) and (cuentacartel_h<197)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-	
---Simbolo " ' " :)
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<226) and (cuentacartel_h>210) and (cuentacartel_h<216)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
- 
-	
---Palabra 'RE'
---Letra 'R' :)
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>267) and (cuentacartel_h<273)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<243) and (cuentacartel_h>298) and (cuentacartel_h<304)) then --linea der sup
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>237) and (cuentacartel_v<265) and (cuentacartel_h>290) and (cuentacartel_h<296)) then --linea der inf
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>267) and (cuentacartel_h<304)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>237) and (cuentacartel_v<243) and (cuentacartel_h>267) and (cuentacartel_h<304)) then --medio
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";	
-	
---Letra 'E' :)
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>313) and (cuentacartel_h<319)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>313) and (cuentacartel_h<347)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>313) and (cuentacartel_h<347)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>237) and (cuentacartel_v<243) and (cuentacartel_h>313) and (cuentacartel_h<334)) then --medio
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-	
---Palabra "VO'"
---Letra 'V' :)
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>388) and (cuentacartel_h<394)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>412) and (cuentacartel_h<418)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>388) and (cuentacartel_h<418)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-	
-	
---Letra 'O' :)
-
-elsif  ((estado_pelotita = cartel1b) and  (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>427) and (cuentacartel_h<433)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>455) and (cuentacartel_h<461)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>427) and (cuentacartel_h<461)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel1b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>427) and (cuentacartel_h<461)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-
---Simbolo " ' " :)
-
-elsif ((estado_pelotita = cartel1b) and (cuentacartel_v>209) and (cuentacartel_v<226) and (cuentacartel_h>471) and (cuentacartel_h<477)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
 	
 	
 --Numero '1' :)
@@ -1546,192 +1350,6 @@ elsif  ((estado_pelotita = cartel2) and(cuentacartel_v>147) and (cuentacartel_v<
 
 	--Cartel para ganador/a
 
---Palabra "SO'"
---Letra 'S' :)
-
-elsif  ((estado_pelotita = cartel2b) and  (cuentacartel_v>209) and (cuentacartel_v<243) and (cuentacartel_h>109) and (cuentacartel_h<115)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>237) and (cuentacartel_v<265) and (cuentacartel_h>142) and (cuentacartel_h<148)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>109) and (cuentacartel_h<148)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>109) and (cuentacartel_h<148) )then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>237) and (cuentacartel_v<243) and (cuentacartel_h>109) and (cuentacartel_h<148)) then --medio
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
---Letra 'O' :)
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>159) and (cuentacartel_h<165)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>191) and (cuentacartel_h<197)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>159) and (cuentacartel_h<197)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>159) and (cuentacartel_h<197)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-	
---Simbolo " ' " :)
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<226) and (cuentacartel_h>210) and (cuentacartel_h<216)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
- 
-	
---Palabra 'RE'
---Letra 'R' :)
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>267) and (cuentacartel_h<273)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<243) and (cuentacartel_h>298) and (cuentacartel_h<304)) then --linea der sup
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>237) and (cuentacartel_v<265) and (cuentacartel_h>290) and (cuentacartel_h<296)) then --linea der inf
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>267) and (cuentacartel_h<304)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>237) and (cuentacartel_v<243) and (cuentacartel_h>267) and (cuentacartel_h<304)) then --medio
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";	
-	
---Letra 'E' :)
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>313) and (cuentacartel_h<319)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>313) and (cuentacartel_h<347)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>313) and (cuentacartel_h<347)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>237) and (cuentacartel_v<243) and (cuentacartel_h>313) and (cuentacartel_h<334)) then --medio
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-	
---Palabra "VO'"
---Letra 'V' :)
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>388) and (cuentacartel_h<394)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>412) and (cuentacartel_h<418)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>388) and (cuentacartel_h<418)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-	
-	
---Letra 'O' :)
-
-elsif  ((estado_pelotita = cartel2b) and  (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>427) and (cuentacartel_h<433)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<265) and (cuentacartel_h>455) and (cuentacartel_h<461)) then --linea der
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<215) and (cuentacartel_h>427) and (cuentacartel_h<461)) then --techito
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-elsif  ((estado_pelotita = cartel2b) and (cuentacartel_v>259) and (cuentacartel_v<265) and (cuentacartel_h>427) and (cuentacartel_h<461)) then --piso
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-
-
---Simbolo " ' " :)
-
-elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>209) and (cuentacartel_v<226) and (cuentacartel_h>471) and (cuentacartel_h<477)) then --linea izq
-
-	salidarojo<="0000000000";
-	salidaazul<="0000000000";
-	salidaverde<="0000000000";
-	
-
 --Linea que atraviesa 'PLAYER' :)
 
 elsif ((estado_pelotita = cartel2b) and (cuentacartel_v>122) and (cuentacartel_v<128) and (cuentacartel_h>117) and (cuentacartel_h<392)) then
@@ -1957,7 +1575,7 @@ begin
                                 else
                                     cuenta_horzjugador<=cuenta;
                                     cuenta_horizpelota<=cuenta;
-												cuentacartel_h<=cuenta;
+				    cuentacartel_h<=cuenta;
                                     cuenta:=cuenta+1;
                                 end if;
             when s3 =>
@@ -2010,7 +1628,7 @@ begin
                                             cuenta_vertj1<=cuenta;
                                             cuenta_vertj2<=cuenta;
                                             cuenta_vertpelota<=cuenta;
-														  cuentacartel_v<=cuenta;
+					    cuentacartel_v<=cuenta;
                                             cuenta:=cuenta+1;
                                         end if;
                     when s3 =>
